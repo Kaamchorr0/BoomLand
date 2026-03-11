@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
+    public Transform player;
     public float MouseSensitivity= 500f;
     float xRotation= 0f;
     float yRotation= 0f;
@@ -21,6 +22,8 @@ public class MouseMovement : MonoBehaviour
         xRotation= Mathf.Clamp(xRotation, TopClamp, BottomClamp);
 
         yRotation += mouseX;
-        transform.localRotation= Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.localRotation= Quaternion.Euler(xRotation, 0, 0f);
+        
+        player.Rotate(Vector3.up * mouseX);
     }
 }
