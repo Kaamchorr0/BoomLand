@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         readyToShoot= false;
         Vector3 shootingDirection= CalculateDirectionandSpread().normalized;
         GameObject bullet= Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized*bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection*bulletVelocity, ForceMode.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletlife));
 
         if (allowReset)
